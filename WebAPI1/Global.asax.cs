@@ -19,13 +19,13 @@ namespace WebAPI1
             var tracerProvider = Sdk.CreateTracerProviderBuilder()
 .AddAzureMonitorTraceExporter(options =>
 {
-options.ConnectionString = "InstrumentationKey=abaf2cc5-14b8-43c4-95b9-6db0e1c0ccdd;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/";
+options.ConnectionString = "InstrumentationKey=xxxxxxxxxxx;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/";
 });
 
             var metricsProvider = Sdk.CreateMeterProviderBuilder()
                 .AddAzureMonitorMetricExporter(options =>
                 {
-                    options.ConnectionString = "InstrumentationKey=abaf2cc5-14b8-43c4-95b9-6db0e1c0ccdd;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/";
+                    options.ConnectionString = "InstrumentationKey=xxxxxxxxxxx;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/";
                 });
 
             var loggerFactory = LoggerFactory.Create(builder =>
@@ -34,7 +34,7 @@ options.ConnectionString = "InstrumentationKey=abaf2cc5-14b8-43c4-95b9-6db0e1c0c
                 {
                     options.AddAzureMonitorLogExporter(options1 =>
                     {
-                        options1.ConnectionString = "InstrumentationKey=abaf2cc5-14b8-43c4-95b9-6db0e1c0ccdd;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/";
+                        options1.ConnectionString = "InstrumentationKey=xxxxxxxxxx;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/";
                     });
 
                 });
