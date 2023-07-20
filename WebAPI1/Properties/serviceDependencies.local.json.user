@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2023-07-13T10:22:25.2760338Z"
+    },
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2023-07-13T10:36:10.6051331Z"
+    }
+  },
+  "parameters": {
+    "mssql1.subscriptionId": {
+      "Name": "mssql1.subscriptionId",
+      "Type": "subscription",
+      "Value": "5810601f-58ba-4bfa-a29c-cea88304fbd5"
+    },
+    "mssql1.resourceGroupName": {
+      "Name": "mssql1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "AIDemoDNFSDK"
+    },
+    "subscriptionId": {
+      "Name": "subscriptionId",
+      "Type": "subscription",
+      "Value": "5810601f-58ba-4bfa-a29c-cea88304fbd5"
+    }
+  }
+}

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Azure.Monitor.OpenTelemetry.Exporter;
+using Microsoft.Extensions.Logging;
+using OpenTelemetry;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -11,8 +14,10 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
+
     public class HomeController : Controller
     {
+        
         public ActionResult Index()
         {
 
@@ -20,7 +25,7 @@ namespace WebApplication1.Controllers
 
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://localhost:44341/api/Swagger");
+                client.BaseAddress = new Uri("https://webappaidemodnfopt2.azurewebsites.net/api/Employee");
 
                 //Called Member default GET All records  
                 //GetAsync to send a GET request   
@@ -54,7 +59,7 @@ namespace WebApplication1.Controllers
 
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://localhost:44341/api");
+                client.BaseAddress = new Uri("https://webappaidemodnfopt2.azurewebsites.net/api/Employee");
 
                 //Called Member default GET All records  
                 //GetAsync to send a GET request   
@@ -103,7 +108,7 @@ namespace WebApplication1.Controllers
 
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://localhost:44341/api/swagger");
+                client.BaseAddress = new Uri("https://webappaidemodnfopt2.azurewebsites.net/api/Employee");
 
                 //Called Member default GET All records  
                 //GetAsync to send a GET request   

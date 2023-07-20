@@ -13,10 +13,10 @@ namespace WebAPI1.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DotNetAppSqlDb_dbEntities : DbContext
+    public partial class WebAPI1_dbEntities : DbContext
     {
-        public DotNetAppSqlDb_dbEntities()
-            : base("name=DotNetAppSqlDb_dbEntities")
+        public WebAPI1_dbEntities()
+            : base("name=WebAPI1_dbEntities")
         {
         }
     

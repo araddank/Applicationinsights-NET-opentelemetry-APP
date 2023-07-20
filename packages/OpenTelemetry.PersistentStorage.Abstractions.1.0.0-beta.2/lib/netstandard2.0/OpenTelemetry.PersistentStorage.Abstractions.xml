@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenTelemetry.PersistentStorage.Abstractions</name>
+    </assembly>
+    <members>
+        <member name="M:OpenTelemetry.Internal.ExceptionExtensions.ToInvariantString(System.Exception)">
+            <summary>
+            Returns a culture-independent string representation of the given <paramref name="exception"/> object,
+            appropriate for diagnostics tracing.
+            </summary>
+            <param name="exception">Exception to convert to string.</param>
+            <returns>Exception as string with no culture.</returns>
+        </member>
+        <member name="T:OpenTelemetry.PersistentStorage.Abstractions.PersistentBlob">
+            <summary>
+            Represents a persistent blob.
+            </summary>
+        </member>
+        <member name="M:OpenTelemetry.PersistentStorage.Abstractions.PersistentBlob.TryRead(System.Byte[]@)">
+            <summary>
+            Attempts to read the content from the blob.
+            </summary>
+            <param name="buffer">
+            The content to be read.
+            </param>
+            <returns>
+            True if read was successful or else false.
+            </returns>
+        </member>
+        <member name="M:OpenTelemetry.PersistentStorage.Abstractions.PersistentBlob.TryWrite(System.Byte[],System.Int32)">
+            <summary>
+            Attempts to write the given content to the blob.
+            </summary>
+            <param name="buffer">
+            The content to be written.
+            </param>
+            <param name="leasePeriodMilliseconds">
+            The number of milliseconds to lease after the write operation finished.
+            </param>
+            <returns>
+            True if the write operation succeeded or else false.
+            </returns>
+        </member>
+        <member name="M:OpenTelemetry.PersistentStorage.Abstractions.PersistentBlob.TryLease(System.Int32)">
+            <summary>
+            Attempts to acquire lease on the blob.
+            </summary>
+            <param name="leasePeriodMilliseconds">
+            The number of milliseconds to lease.
+            </param>
+            <returns>
+            true if lease is acquired or else false.
+            </returns>
+        </member>
+        <member name="M:OpenTelemetry.PersistentStorage.Abstractions.PersistentBlob.TryDelete">
+            <summary>
+            Attempts to delete the blob.
+            </summary>
+            <returns>
+            True if delete was successful else false.
+            </returns>
+        </member>
+        <member name="T:OpenTelemetry.PersistentStorage.Abstractions.PersistentBlobProvider">
+            <summary>
+            Represents persistent blob provider.
+            </summary>
+        </member>
+        <member name="M:OpenTelemetry.PersistentStorage.Abstractions.PersistentBlobProvider.TryCreateBlob(System.Byte[],System.Int32,OpenTelemetry.PersistentStorage.Abstractions.PersistentBlob@)">
+            <summary>
+            Attempts to create a new blob with the provided data and lease it.
+            </summary>
+            <param name="buffer">
+            The content to be written.
+            </param>
+            <param name="leasePeriodMilliseconds">
+            The number of milliseconds to lease after the blob is created.
+            </param>
+            <param name="blob">
+            Blob if it is created.
+            </param>
+            <returns>
+            True if the blob was created or else false.
+            </returns>
+        </member>
+        <member name="M:OpenTelemetry.PersistentStorage.Abstractions.PersistentBlobProvider.TryCreateBlob(System.Byte[],OpenTelemetry.PersistentStorage.Abstractions.PersistentBlob@)">
+            <summary>
+            Attempts to create a new blob with the provided data.
+            </summary>
+            <param name="buffer">
+            The content to be written.
+            </param>
+            <param name="blob">
+            Blob if it is created.
+            </param>
+            <returns>
+            True if the blob was created or else false.
+            </returns>
+        </member>
+        <member name="M:OpenTelemetry.PersistentStorage.Abstractions.PersistentBlobProvider.TryGetBlob(OpenTelemetry.PersistentStorage.Abstractions.PersistentBlob@)">
+            <summary>
+            Attempts to get a single blob from storage.
+            </summary>
+            <param name="blob">
+            Blob object if found.
+            </param>
+            <returns>
+            True if blob is present or else false.
+            </returns>
+        </member>
+        <member name="M:OpenTelemetry.PersistentStorage.Abstractions.PersistentBlobProvider.GetBlobs">
+            <summary>
+            Reads a sequence of blobs from storage.
+            </summary>
+            <returns>
+            List of blobs if present in storage or else empty collection.
+            </returns>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute">
+            <summary>Specifies that null is allowed as an input even if the corresponding type disallows it.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullAttribute">
+            <summary>Specifies that an output may be null even if the corresponding type disallows it.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
+            <summary>Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue"/>, the parameter will not be null even if the corresponding type allows it.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)">
+            <summary>Initializes the attribute with the specified return value condition.</summary>
+            <param name="returnValue">
+            The return value condition. If the method returns this value, the associated parameter will not be null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue">
+            <summary>Gets the return value condition.</summary>
+        </member>
+    </members>
+</doc>

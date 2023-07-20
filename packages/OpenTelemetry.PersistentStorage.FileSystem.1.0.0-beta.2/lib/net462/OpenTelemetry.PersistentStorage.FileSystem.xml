@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenTelemetry.PersistentStorage.FileSystem</name>
+    </assembly>
+    <members>
+        <member name="M:OpenTelemetry.Internal.ExceptionExtensions.ToInvariantString(System.Exception)">
+            <summary>
+            Returns a culture-independent string representation of the given <paramref name="exception"/> object,
+            appropriate for diagnostics tracing.
+            </summary>
+            <param name="exception">Exception to convert to string.</param>
+            <returns>Exception as string with no culture.</returns>
+        </member>
+        <member name="T:OpenTelemetry.Internal.Guard">
+            <summary>
+            Methods for guarding against exception throwing values.
+            </summary>
+        </member>
+        <member name="M:OpenTelemetry.Internal.Guard.ThrowIfNull(System.Object,System.String)">
+            <summary>
+            Throw an exception if the value is null.
+            </summary>
+            <param name="value">The value to check.</param>
+            <param name="paramName">The parameter name to use in the thrown exception.</param>
+        </member>
+        <member name="M:OpenTelemetry.Internal.Guard.ThrowIfNullOrEmpty(System.String,System.String)">
+            <summary>
+            Throw an exception if the value is null or empty.
+            </summary>
+            <param name="value">The value to check.</param>
+            <param name="paramName">The parameter name to use in the thrown exception.</param>
+        </member>
+        <member name="M:OpenTelemetry.Internal.Guard.ThrowIfNullOrWhitespace(System.String,System.String)">
+            <summary>
+            Throw an exception if the value is null or whitespace.
+            </summary>
+            <param name="value">The value to check.</param>
+            <param name="paramName">The parameter name to use in the thrown exception.</param>
+        </member>
+        <member name="M:OpenTelemetry.Internal.Guard.ThrowIfZero(System.Int32,System.String,System.String)">
+            <summary>
+            Throw an exception if the value is zero.
+            </summary>
+            <param name="value">The value to check.</param>
+            <param name="message">The message to use in the thrown exception.</param>
+            <param name="paramName">The parameter name to use in the thrown exception.</param>
+        </member>
+        <member name="M:OpenTelemetry.Internal.Guard.ThrowIfInvalidTimeout(System.Int32,System.String)">
+            <summary>
+            Throw an exception if the value is not considered a valid timeout.
+            </summary>
+            <param name="value">The value to check.</param>
+            <param name="paramName">The parameter name to use in the thrown exception.</param>
+        </member>
+        <member name="M:OpenTelemetry.Internal.Guard.ThrowIfOutOfRange(System.Int32,System.String,System.Int32,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Throw an exception if the value is not within the given range.
+            </summary>
+            <param name="value">The value to check.</param>
+            <param name="paramName">The parameter name to use in the thrown exception.</param>
+            <param name="min">The inclusive lower bound.</param>
+            <param name="max">The inclusive upper bound.</param>
+            <param name="minName">The name of the lower bound.</param>
+            <param name="maxName">The name of the upper bound.</param>
+            <param name="message">An optional custom message to use in the thrown exception.</param>
+        </member>
+        <member name="M:OpenTelemetry.Internal.Guard.ThrowIfOutOfRange(System.Double,System.String,System.Double,System.Double,System.String,System.String,System.String)">
+            <summary>
+            Throw an exception if the value is not within the given range.
+            </summary>
+            <param name="value">The value to check.</param>
+            <param name="paramName">The parameter name to use in the thrown exception.</param>
+            <param name="min">The inclusive lower bound.</param>
+            <param name="max">The inclusive upper bound.</param>
+            <param name="minName">The name of the lower bound.</param>
+            <param name="maxName">The name of the upper bound.</param>
+            <param name="message">An optional custom message to use in the thrown exception.</param>
+        </member>
+        <member name="M:OpenTelemetry.Internal.Guard.ThrowIfNotOfType``1(System.Object,System.String)">
+            <summary>
+            Throw an exception if the value is not of the expected type.
+            </summary>
+            <param name="value">The value to check.</param>
+            <param name="paramName">The parameter name to use in the thrown exception.</param>
+            <typeparam name="T">The type attempted to convert to.</typeparam>
+            <returns>The value casted to the specified type.</returns>
+        </member>
+        <member name="T:OpenTelemetry.PersistentStorage.FileSystem.DirectorySizeTracker">
+            <summary>
+            Tracks the available storage in a specified directory.
+            </summary>
+        </member>
+        <member name="T:OpenTelemetry.PersistentStorage.FileSystem.FileBlob">
+            <summary>
+            The <see cref="T:OpenTelemetry.PersistentStorage.FileSystem.FileBlob"/> allows to save a blob
+            in file storage.
+            </summary>
+        </member>
+        <member name="M:OpenTelemetry.PersistentStorage.FileSystem.FileBlob.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenTelemetry.PersistentStorage.FileSystem.FileBlob"/>
+            class.
+            </summary>
+            <param name="fullPath">Absolute file path of the blob.</param>
+        </member>
+        <member name="T:OpenTelemetry.PersistentStorage.FileSystem.FileBlobProvider">
+            <summary>
+            Persistent file storage <see cref="T:OpenTelemetry.PersistentStorage.FileSystem.FileBlobProvider"/> allows to save data
+            as blobs in file storage.
+            </summary>
+        </member>
+        <member name="M:OpenTelemetry.PersistentStorage.FileSystem.FileBlobProvider.#ctor(System.String,System.Int64,System.Int32,System.Int64,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenTelemetry.PersistentStorage.FileSystem.FileBlobProvider"/>
+            class.
+            </summary>
+            <param name="path">
+            Sets file storage folder location where blobs are stored.
+            </param>
+            <param name="maxSizeInBytes">
+            Maximum allowed storage folder size.
+            Default is 50 MB.
+            </param>
+            <param name="maintenancePeriodInMilliseconds">
+            Maintenance event runs at specified interval.
+            Removes expired leases and blobs that exceed retention period.
+            Default is 2 minutes.
+            </param>
+            <param name="retentionPeriodInMilliseconds">
+            Retention period in milliseconds for the blob.
+            Default is 2 days.
+            </param>
+            <param name="writeTimeoutInMilliseconds">
+            Controls the timeout when writing a buffer to blob.
+            Default is 1 minute.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            path is null.
+            </exception>
+            <exception cref="T:System.IO.DirectoryNotFoundException">
+            invalid path.
+            </exception>
+            <exception cref="T:System.IO.PathTooLongException">
+            path exceeds system defined maximum length.
+            </exception>
+            <exception cref="T:System.UnauthorizedAccessException">
+            insufficient priviledges for provided path.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            path contains a colon character (:) that is not part of a drive label ("C:\").
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            path contains invalid characters.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            path is either file or network name is not known.
+            </exception>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.CallerArgumentExpressionAttribute">
+            <summary>Allows capturing of the expressions passed to a method.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullAttribute">
+            <summary>Specifies that an output is not <see langword="null"/> even if
+            the corresponding type allows it. Specifies that an input argument was
+            not <see langword="null"/> when the call returns.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.AllowNullAttribute">
+            <summary>Specifies that null is allowed as an input even if the corresponding type disallows it.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.MaybeNullAttribute">
+            <summary>Specifies that an output may be null even if the corresponding type disallows it.</summary>
+        </member>
+        <member name="T:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute">
+            <summary>Specifies that when a method returns <see cref="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue"/>, the parameter will not be null even if the corresponding type allows it.</summary>
+        </member>
+        <member name="M:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.#ctor(System.Boolean)">
+            <summary>Initializes the attribute with the specified return value condition.</summary>
+            <param name="returnValue">
+            The return value condition. If the method returns this value, the associated parameter will not be null.
+            </param>
+        </member>
+        <member name="P:System.Diagnostics.CodeAnalysis.NotNullWhenAttribute.ReturnValue">
+            <summary>Gets the return value condition.</summary>
+        </member>
+    </members>
+</doc>

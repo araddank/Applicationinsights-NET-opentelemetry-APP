@@ -1,12 +1,17 @@
-﻿using System;
+﻿using Azure.Monitor.OpenTelemetry.Exporter;
+using Microsoft.Extensions.Logging;
+using OpenTelemetry;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
 namespace WebAPI1
 {
+
     public static class WebApiConfig
     {
+       
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
